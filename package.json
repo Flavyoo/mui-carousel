@@ -1,7 +1,7 @@
 {
-  "name": "typescript-starter-package",
-  "version": "1.0.1",
-  "description": "A starter package for TypeScript and Node Projects",
+  "name": "@flavyoo/mui-carousel",
+  "version": "0.0.1",
+  "description": "A React and Material UI carousel component",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
