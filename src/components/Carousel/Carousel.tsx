@@ -4,7 +4,8 @@ import { CarouselProps } from './Carousel.props';
 import { styled } from '@mui/material/styles';
 
 const Root = styled('div')`
-  width: '100%';
+  height: auto,
+  width: 100%;
 `;
 
 const CarouselItem = styled('li')``;
