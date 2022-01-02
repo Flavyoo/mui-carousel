@@ -1,21 +1,23 @@
 import * as React from 'react';
 
 import { CarouselProps } from './Carousel.props';
-import { styled } from '@mui/material/styles';
+import { LegendControls } from '../LegendControls';
+import { styled } from '@mui/system';
 
 const Root = styled('div')`
-  height: auto,
+  height: auto;
   width: 100%;
 `;
 
-const CarouselItem = styled('li')``;
-
 export const Carousel: React.FC<CarouselProps> = ({ id, children }) => {
+  const totalChildren = React.Children.count(children);
+
   return (
     <Root id={id}>
-      {React.Children.map(children, item => (
-        <CarouselItem>{item}</CarouselItem>
+      {React.Children.map(children, (item, index) => (
+        <ul key={index}>{item}</ul>
       ))}
+      <LegendControls numberOfControls={totalChildren} />
     </Root>
   );
 };
