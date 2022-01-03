@@ -28,6 +28,7 @@ const AnimatedSlider = styled('ul')({
   margin: 0,
   transition: 'all .35s ease-in-out',
   transitionDuration: '350ms',
+  display: 'flex',
 });
 
 const Slide = styled('li', {
@@ -37,7 +38,6 @@ const Slide = styled('li', {
   margin: 0,
   position: 'relative',
   textAlign: 'center',
-  flexDirection: 'column',
   flexFlow: 'column',
   ...(selected && {}),
   ...(previous && {}),
