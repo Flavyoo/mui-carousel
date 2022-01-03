@@ -23,12 +23,22 @@ const ControlLI = styled('li')({
 });
 
 export const LegendControls: React.FC<LegendControlProps> = ({
+  onClick,
   numberOfControls,
 }) => {
+  const handleClick = React.useCallback(
+    (index: number) => {
+      return () => {
+        onClick(index);
+      };
+    },
+    [onClick]
+  );
+
   return (
     <ControlUL>
       {[...Array(numberOfControls)].map((_, i) => (
-        <ControlLI key={i} />
+        <ControlLI key={i} onClick={handleClick(i)} />
       ))}
     </ControlUL>
   );
