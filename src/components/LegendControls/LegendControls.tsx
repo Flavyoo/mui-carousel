@@ -8,6 +8,7 @@ const ControlUL = styled('ul')({
   textAlign: 'center',
   width: '100%',
   zIndex: 1,
+  bottom: 0,
 });
 
 const ControlLI = styled('li')({
@@ -16,10 +17,9 @@ const ControlLI = styled('li')({
   margin: '0 0.5rem',
   borderRadius: '50%',
   transition: 'opacity 0.25s ease-in',
-  opacity: 0.3,
   boxShadow: '1px 1px 2px rgb(0 0 0/90%)',
-  width: 10,
-  height: 10,
+  width: 15,
+  height: 15,
 });
 
 export const LegendControls: React.FC<LegendControlProps> = ({

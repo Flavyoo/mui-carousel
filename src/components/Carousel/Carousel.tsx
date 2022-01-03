@@ -27,7 +27,6 @@ const AnimatedSlider = styled('ul')({
   padding: 0,
   margin: 0,
   transition: 'all .35s ease-in-out',
-  transform: 'translate3d(-1300%, 0px, 0px)',
   transitionDuration: '350ms',
 });
 
@@ -63,13 +62,17 @@ export const Carousel: React.FC<CarouselProps> = ({
         onClick={i => console.log('index: ', i)}
       />
       <SliderContainer>
-        {React.Children.map(children, (child, index) => (
-          <AnimatedSlider key={index}>
-            <Slide selected={index === childInView} previous={false}>
-              {child}
+        <AnimatedSlider>
+          {React.Children.map(children, (item, index) => (
+            <Slide
+              key={index}
+              selected={index === childInView}
+              previous={false}
+            >
+              {item}
             </Slide>
-          </AnimatedSlider>
-        ))}
+          ))}
+        </AnimatedSlider>
       </SliderContainer>
     </Root>
   );
