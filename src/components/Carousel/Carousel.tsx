@@ -43,30 +43,52 @@ const Slide = styled('li', {
   ...(previous && {}),
 }));
 
+export const CSSTranslate = (
+  position: number,
+  metric: 'px' | '%',
+  axis: 'horizontal' | 'vertical'
+) => {
+  const positionPercent = position === 0 ? position : position + metric;
+  const positionCss =
+    axis === 'horizontal' ? [positionPercent, 0, 0] : [0, positionPercent, 0];
+  const transitionProp = 'translate3d';
+
+  const translatedPosition = '(' + positionCss.join(',') + ')';
+
+  return transitionProp + translatedPosition;
+};
+
 export const Carousel: React.FC<CarouselProps> = ({
   id,
   selectedChild,
   children,
 }) => {
   const totalChildren = React.Children.count(children);
-  const [childInView, setSelectedChild] = React.useState<number>(0);
+  const [currentlySelectedChild, setSelectedChild] = React.useState<number>(0);
 
   React.useEffect(() => {
     setSelectedChild(selectedChild ?? 0);
   }, [setSelectedChild]);
 
+  const handleSelectChild = React.useCallback(
+    (childIndex: number) => {
+      setSelectedChild(childIndex);
+    },
+    [setSelectedChild]
+  );
+
   return (
     <Root id={id}>
       <LegendControls
         numberOfControls={totalChildren}
-        onClick={i => console.log('index: ', i)}
+        onClick={handleSelectChild}
       />
       <SliderContainer>
         <AnimatedSlider>
           {React.Children.map(children, (item, index) => (
             <Slide
               key={index}
-              selected={index === childInView}
+              selected={index === currentlySelectedChild}
               previous={false}
             >
               {item}
