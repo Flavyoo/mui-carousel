@@ -6,7 +6,7 @@ export interface SlideProps {
   /**
    * Wehther this is the previous slide
    */
-  previous: boolean
+  previous: boolean;
 }
 
 export interface CarouselProps {

@@ -1,8 +1,9 @@
 import * as React from 'react';
 
+import { styled } from '@mui/system';
 import { CarouselProps, SlideProps } from './Carousel.props';
 import { LegendControls } from '../LegendControls';
-import { styled } from '@mui/system';
+import { getTranslatePercentage, createTranslateStyle } from './utils';
 
 const Root = styled('div')({
   position: 'relative',
@@ -20,7 +21,7 @@ const SliderContainer = styled('div')({
   transition: 'height .15s ease-in',
 });
 
-const AnimatedSlider = styled('ul')({
+const AnimatedSlider = styled('ul', { shouldForwardProp: () => true })({
   position: 'relative',
   listStyle: 'none',
   width: '100%',
@@ -43,21 +44,6 @@ const Slide = styled('li', {
   ...(previous && {}),
 }));
 
-export const CSSTranslate = (
-  position: number,
-  metric: 'px' | '%',
-  axis: 'horizontal' | 'vertical'
-) => {
-  const positionPercent = position === 0 ? position : position + metric;
-  const positionCss =
-    axis === 'horizontal' ? [positionPercent, 0, 0] : [0, positionPercent, 0];
-  const transitionProp = 'translate3d';
-
-  const translatedPosition = '(' + positionCss.join(',') + ')';
-
-  return transitionProp + translatedPosition;
-};
-
 export const Carousel: React.FC<CarouselProps> = ({
   id,
   selectedChild,
@@ -77,6 +63,10 @@ export const Carousel: React.FC<CarouselProps> = ({
     [setSelectedChild]
   );
 
+  const currentTranslatePercentage = getTranslatePercentage(
+    currentlySelectedChild
+  );
+
   return (
     <Root id={id}>
       <LegendControls
@@ -84,7 +74,9 @@ export const Carousel: React.FC<CarouselProps> = ({
         onClick={handleSelectChild}
       />
       <SliderContainer>
-        <AnimatedSlider>
+        <AnimatedSlider
+          style={createTranslateStyle(currentTranslatePercentage)}
+        >
           {React.Children.map(children, (item, index) => (
             <Slide
               key={index}
