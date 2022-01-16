@@ -4,11 +4,10 @@ import { LegendControlProps } from './LegendControls.props';
 import { styled } from '@mui/system';
 
 const ControlUL = styled('ul')({
-  position: 'absolute',
+  padding: 0,
+  margin: '10px 0',
   textAlign: 'center',
   width: '100%',
-  zIndex: 1,
-  bottom: 0,
 });
 
 const ControlLI = styled('li')({
@@ -18,8 +17,8 @@ const ControlLI = styled('li')({
   borderRadius: '50%',
   transition: 'opacity 0.25s ease-in',
   boxShadow: '1px 1px 2px rgb(0 0 0/90%)',
-  width: 15,
-  height: 15,
+  width: 10,
+  height: 10,
 });
 
 export const LegendControls: React.FC<LegendControlProps> = ({

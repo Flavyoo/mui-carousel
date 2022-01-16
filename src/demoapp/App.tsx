@@ -5,21 +5,21 @@ import { styled } from '@mui/material/styles';
 
 const StyledContainer = styled(Container)({
   position: 'relative',
-  backgroundColor: '#ddd',
-  height: '100%',
-});;
+  height: 'auto',
+  backgroundColor: 'antiquewhite',
+});
 
 export default class App extends React.Component {
   render() {
     return (
-        <StyledContainer maxWidth="lg">
-          <Carousel>
-            <Typography variant="h1">What</Typography>
-            <Typography variant="h1">Why</Typography>
-            <Typography variant="h1">When</Typography>
-            <Typography variant="h1">Who</Typography>
-          </Carousel>
-        </StyledContainer>
+      <StyledContainer maxWidth="lg">
+        <Carousel>
+          <img src="https://picsum.photos/id/237/200/300" />
+          <img src="https://picsum.photos/id/237/200/300" />
+          <img src="https://picsum.photos/id/237/200/300" />
+          <img src="https://picsum.photos/id/237/200/300" />
+        </Carousel>
+      </StyledContainer>
     );
   }
 }

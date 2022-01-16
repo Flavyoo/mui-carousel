@@ -69,10 +69,6 @@ export const Carousel: React.FC<CarouselProps> = ({
 
   return (
     <Root id={id}>
-      <LegendControls
-        numberOfControls={totalChildren}
-        onClick={handleSelectChild}
-      />
       <SliderContainer>
         <AnimatedSlider
           style={createTranslateStyle(currentTranslatePercentage)}
@@ -88,6 +84,10 @@ export const Carousel: React.FC<CarouselProps> = ({
           ))}
         </AnimatedSlider>
       </SliderContainer>
+      <LegendControls
+        numberOfControls={totalChildren}
+        onClick={handleSelectChild}
+      />
     </Root>
   );
 };
