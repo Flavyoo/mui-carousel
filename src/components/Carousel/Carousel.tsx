@@ -66,24 +66,27 @@ export const Carousel: React.FC<CarouselProps> = ({
 
   const thumbnailImages = React.useMemo(
     () =>
-      React.Children.map<React.ReactNode, React.ReactNode>(children, child => {
-        let image: React.ReactNode | undefined = child;
+      React.Children.map<React.ReactChild | undefined, React.ReactChild>(
+        children as React.ReactChild,
+        child => {
+          let image: React.ReactChild = child;
 
-        if ((child as React.ReactElement).type !== 'img') {
-          const grandChildren = React.Children.toArray(
-            (child as React.ReactElement).props.children as React.ReactNode
-          );
-          image = grandChildren.find(
-            grandChild => (grandChild as React.ReactElement).type === 'img'
-          );
+          if ((child as React.ReactElement).type !== 'img') {
+            const grandChildren = React.Children.toArray(
+              (child as React.ReactElement).props.children as React.ReactElement
+            );
+            const foundImage = grandChildren.find(
+              grandChild => (grandChild as React.ReactElement).type === 'img'
+            ) as React.ReactChild;
+
+            if (foundImage) {
+              image = foundImage;
+            }
+          }
+
+          return image as React.ReactChild;
         }
-
-        if (!image) {
-          return undefined;
-        }
-
-        return image;
-      }),
+      ),
     [children]
   );
 
@@ -115,7 +118,7 @@ export const Carousel: React.FC<CarouselProps> = ({
       {!children ||
       totalChildren === 0 ||
       (thumbnailImages && thumbnailImages.length === 0) ? undefined : (
-        <Thumbnails>{thumbnailImages}</Thumbnails>
+        <Thumbnails images={thumbnailImages} />
       )}
     </Root>
   );
