@@ -7,7 +7,6 @@ const StyledContainer = styled(Container)({
   position: 'relative',
   height: 'auto',
   backgroundColor: 'antiquewhite',
-  width: 500,
 });
 
 export default class App extends React.Component {
