@@ -10,7 +10,7 @@ const ImageListItem = styled('div')`
   margin-right: 0.5rem;
   cursor: pointer;
   img {
-    width: 80px;
+    width: 70px;
     height: auto;
   }
 `;
