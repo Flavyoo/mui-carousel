@@ -1,3 +1,18 @@
-# typescript-starter-package
+# Material UI Carousel
 
-A starter package for TypeScript and Node Projects. Includes configuration for prettier, jest, tslint, and special npm scripts such as prepare, prepublishOnly, preversion, version and postversion.
+This is a simple implementation of a carousel component using Material UI Components.
+
+## Usage
+
+See the /src/demoapp for examples of usages.
+
+## Features
+
+- Response
+- Mobile Friendly
+- Supports any html element
+
+## Upcoming Features
+
+- Image thumbnails
+- Accessibility improvements including Keyboard Navigation
