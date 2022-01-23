@@ -7,6 +7,7 @@ const StyledContainer = styled(Container)({
   position: 'relative',
   height: 'auto',
   backgroundColor: 'antiquewhite',
+  width: 500,
 });
 
 export default class App extends React.Component {
@@ -14,10 +15,10 @@ export default class App extends React.Component {
     return (
       <StyledContainer maxWidth="lg">
         <Carousel>
-          <img src="https://picsum.photos/id/237/200/300" />
-          <img src="https://picsum.photos/id/237/200/300" />
-          <img src="https://picsum.photos/id/237/200/300" />
-          <img src="https://picsum.photos/id/237/200/300" />
+          <img src="https://picsum.photos/id/237/500/300" />
+          <img src="https://picsum.photos/id/238/500/300" />
+          <img src="https://picsum.photos/id/239/500/300" />
+          <img src="https://picsum.photos/id/240/500/300" />
         </Carousel>
       </StyledContainer>
     );

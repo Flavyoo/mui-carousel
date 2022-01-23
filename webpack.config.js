@@ -7,7 +7,6 @@ const config = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
   },
-  watch: true,
   mode: 'development',
   devServer: {
     static: {
