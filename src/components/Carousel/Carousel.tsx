@@ -98,8 +98,6 @@ export const Carousel: React.FC<CarouselProps> = ({
     currentlySelectedChild
   );
 
-  console.log(thumbnailImages);
-
   return (
     <Root id={id}>
       <SliderContainer>
