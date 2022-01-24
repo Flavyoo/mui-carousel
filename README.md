@@ -16,3 +16,4 @@ See the /src/demoapp for examples of usages.
 
 - Image thumbnails
 - Accessibility improvements including Keyboard Navigation
+- Customizations

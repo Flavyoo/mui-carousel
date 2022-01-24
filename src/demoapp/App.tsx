@@ -7,7 +7,8 @@ const StyledContainer = styled(Container)({
   position: 'relative',
   height: 'auto',
   backgroundColor: 'antiquewhite',
-  width: 1000,
+  width: 'auto',
+  maxWidth: 800,
 });
 
 export default class App extends React.Component {

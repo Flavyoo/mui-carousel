@@ -25,12 +25,24 @@ export const Thumbnails: React.FC<ThumbnailProps> = ({ images, onClick }) => {
     [onClick]
   );
 
+  const handleKeyDown = React.useCallback(
+    (index: number) => {
+      return (event: React.KeyboardEvent) => {
+        if (event.key === 'Enter') {
+          onClick(index);
+        }
+      };
+    },
+    [onClick]
+  );
+
   return (
     <div tabIndex={0}>
       <ImageList>
         {images.map((image, index) => (
           <ImageListItem
             onClick={handleClick(index)}
+            onKeyDown={handleKeyDown(index)}
             aria-label={`Thumbnail for slide item ${index}`}
             key={index}
             role="button"
