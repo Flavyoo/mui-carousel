@@ -19,6 +19,18 @@ export default class App extends React.Component {
           <img src="https://picsum.photos/id/238/1000/600" />
           <img src="https://picsum.photos/id/239/1000/600" />
           <img src="https://picsum.photos/id/240/1000/600" />
+          <img src="https://picsum.photos/id/241/1000/600" />
+          <img src="https://picsum.photos/id/242/1000/600" />
+          <img src="https://picsum.photos/id/243/1000/600" />
+          <img src="https://picsum.photos/id/244/1000/600" />
+          <img src="https://picsum.photos/id/247/1000/600" />
+          <img src="https://picsum.photos/id/248/1000/600" />
+          <img src="https://picsum.photos/id/249/1000/600" />
+          <img src="https://picsum.photos/id/250/1000/600" />
+          <img src="https://picsum.photos/id/251/1000/600" />
+          <img src="https://picsum.photos/id/252/1000/600" />
+          <img src="https://picsum.photos/id/253/1000/600" />
+          <img src="https://picsum.photos/id/254/1000/600" />
         </Carousel>
       </StyledContainer>
     );

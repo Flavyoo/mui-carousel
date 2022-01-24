@@ -4,16 +4,16 @@ import { ThumbnailProps } from './Thumbnails.props';
 
 const ImageList = styled('div')({
   display: 'flex',
+  flexWrap: 'wrap'
 });
 
-const ImageListItem = styled('div')`
-  margin-right: 0.5rem;
-  cursor: pointer;
-  img {
-    width: 70px;
-    height: auto;
-  }
-`;
+const ImageListItem = styled('div')({
+  marginRight: '0.5rem',
+  cursor: 'pointer',
+  'img ': {
+    width: 70,
+  },
+});
 
 export const Thumbnails: React.FC<ThumbnailProps> = ({ images }) => {
   return (
