@@ -118,7 +118,7 @@ export const Carousel: React.FC<CarouselProps> = ({
       {!children ||
       totalChildren === 0 ||
       (thumbnailImages && thumbnailImages.length === 0) ? undefined : (
-        <Thumbnails images={thumbnailImages} />
+        <Thumbnails images={thumbnailImages} onClick={handleSelectChild} />
       )}
     </Root>
   );

@@ -4,7 +4,7 @@ import { ThumbnailProps } from './Thumbnails.props';
 
 const ImageList = styled('div')({
   display: 'flex',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
 });
 
 const ImageListItem = styled('div')({
@@ -15,13 +15,22 @@ const ImageListItem = styled('div')({
   },
 });
 
-export const Thumbnails: React.FC<ThumbnailProps> = ({ images }) => {
+export const Thumbnails: React.FC<ThumbnailProps> = ({ images, onClick }) => {
+  const handleClick = React.useCallback(
+    (index: number) => {
+      return () => {
+        onClick(index);
+      };
+    },
+    [onClick]
+  );
+
   return (
     <div tabIndex={0}>
       <ImageList>
         {images.map((image, index) => (
           <ImageListItem
-            onClick={() => console.log('thumbnail: ', index)}
+            onClick={handleClick(index)}
             aria-label={`Thumbnail for slide item ${index}`}
             key={index}
             role="button"
