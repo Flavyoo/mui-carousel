@@ -34,10 +34,26 @@ export const LegendControls: React.FC<LegendControlProps> = ({
     [onClick]
   );
 
+  const handleKeyDown = React.useCallback(
+    (index: number) => {
+      return (event: React.KeyboardEvent) => {
+        if (event.key === 'Enter') {
+          onClick(index);
+        }
+      };
+    },
+    [onClick]
+  );
+
   return (
-    <ControlUL>
+    <ControlUL tabIndex={0}>
       {[...Array(numberOfControls)].map((_, i) => (
-        <ControlLI key={i} onClick={handleClick(i)} />
+        <ControlLI
+          key={i}
+          onClick={handleClick(i)}
+          onKeyDown={handleKeyDown(i)}
+          tabIndex={0}
+        />
       ))}
     </ControlUL>
   );

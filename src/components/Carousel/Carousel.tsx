@@ -3,6 +3,7 @@ import * as React from 'react';
 import { styled } from '@mui/system';
 import { CarouselProps, SlideProps } from './Carousel.props';
 import { LegendControls } from '../LegendControls';
+import { Thumbnails, ThumbnailImageData } from '../Thumbnails';
 import { getTranslatePercentage, createTranslateStyle } from './utils';
 
 const Root = styled('div')({
@@ -63,9 +64,41 @@ export const Carousel: React.FC<CarouselProps> = ({
     [setSelectedChild]
   );
 
+  const thumbnailImages = React.useMemo(
+    () =>
+      React.Children.map<ThumbnailImageData | undefined, React.ReactChild>(
+        children as React.ReactChild,
+        (child, index) => {
+          if ((child as React.ReactElement).type !== 'img') {
+            const grandChildren = React.Children.toArray(
+              (child as React.ReactElement).props.children as React.ReactElement
+            );
+            const foundImage = grandChildren.find(
+              grandChild => (grandChild as React.ReactElement).type === 'img'
+            ) as React.ReactChild;
+
+            if (foundImage) {
+              return {
+                index,
+                foundImage,
+              };
+            }
+          } else if ((child as React.ReactElement).type === 'img') {
+            return {
+              index,
+              foundImage: child,
+            };
+          }
+        }
+      ),
+    [children]
+  );
+
   const currentTranslatePercentage = getTranslatePercentage(
     currentlySelectedChild
   );
+
+  console.log(thumbnailImages);
 
   return (
     <Root id={id}>
@@ -88,6 +121,11 @@ export const Carousel: React.FC<CarouselProps> = ({
         numberOfControls={totalChildren}
         onClick={handleSelectChild}
       />
+      {!children ||
+      totalChildren === 0 ||
+      (thumbnailImages && thumbnailImages.length === 0) ? undefined : (
+        <Thumbnails images={thumbnailImages} onClick={handleSelectChild} />
+      )}
     </Root>
   );
 };
