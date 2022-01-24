@@ -39,18 +39,21 @@ export const Thumbnails: React.FC<ThumbnailProps> = ({ images, onClick }) => {
   return (
     <div tabIndex={0}>
       <ImageList>
-        {images.map((image, index) => (
-          <ImageListItem
-            onClick={handleClick(index)}
-            onKeyDown={handleKeyDown(index)}
-            aria-label={`Thumbnail for slide item ${index}`}
-            key={index}
-            role="button"
-            tabIndex={0}
-          >
-            {image as React.ReactHTMLElement<HTMLImageElement>}
-          </ImageListItem>
-        ))}
+        {images.map((imageData, _) => {
+          const { foundImage, index } = imageData;
+          return (
+            <ImageListItem
+              onClick={handleClick(index)}
+              onKeyDown={handleKeyDown(index)}
+              aria-label={`Thumbnail for slide item ${index}`}
+              key={index}
+              role="button"
+              tabIndex={0}
+            >
+              {foundImage as React.ReactHTMLElement<HTMLImageElement>}
+            </ImageListItem>
+          );
+        })}
       </ImageList>
     </div>
   );

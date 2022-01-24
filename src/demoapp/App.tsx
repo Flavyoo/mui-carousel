@@ -17,7 +17,7 @@ export default class App extends React.Component {
       <StyledContainer maxWidth="lg">
         <Carousel>
           <img src="https://picsum.photos/id/237/1000/600" />
-          <img src="https://picsum.photos/id/238/1000/600" />
+          <div>Hello World</div>
           <img src="https://picsum.photos/id/239/1000/600" />
           <img src="https://picsum.photos/id/240/1000/600" />
           <img src="https://picsum.photos/id/241/1000/600" />

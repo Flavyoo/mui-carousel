@@ -1,10 +1,15 @@
 import * as React from 'react';
 
+export interface ThumbnailImageData {
+  index: number;
+  foundImage: React.ReactChild;
+}
+
 export interface ThumbnailProps {
   /**
    * React child image elements to render thumbnails for
    */
-  images: React.ReactChild[];
+  images: ThumbnailImageData[];
   /**
    * Click handler for when a thumbnail is clicked
    *

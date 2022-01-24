@@ -3,7 +3,7 @@ import * as React from 'react';
 import { styled } from '@mui/system';
 import { CarouselProps, SlideProps } from './Carousel.props';
 import { LegendControls } from '../LegendControls';
-import { Thumbnails } from '../Thumbnails';
+import { Thumbnails, ThumbnailImageData } from '../Thumbnails';
 import { getTranslatePercentage, createTranslateStyle } from './utils';
 
 const Root = styled('div')({
@@ -66,11 +66,9 @@ export const Carousel: React.FC<CarouselProps> = ({
 
   const thumbnailImages = React.useMemo(
     () =>
-      React.Children.map<React.ReactChild | undefined, React.ReactChild>(
+      React.Children.map<ThumbnailImageData | undefined, React.ReactChild>(
         children as React.ReactChild,
-        child => {
-          let image: React.ReactChild = child;
-
+        (child, index) => {
           if ((child as React.ReactElement).type !== 'img') {
             const grandChildren = React.Children.toArray(
               (child as React.ReactElement).props.children as React.ReactElement
@@ -80,11 +78,17 @@ export const Carousel: React.FC<CarouselProps> = ({
             ) as React.ReactChild;
 
             if (foundImage) {
-              image = foundImage;
+              return {
+                index,
+                foundImage,
+              };
             }
+          } else if ((child as React.ReactElement).type === 'img') {
+            return {
+              index,
+              foundImage: child,
+            };
           }
-
-          return image as React.ReactChild;
         }
       ),
     [children]
@@ -93,6 +97,8 @@ export const Carousel: React.FC<CarouselProps> = ({
   const currentTranslatePercentage = getTranslatePercentage(
     currentlySelectedChild
   );
+
+  console.log(thumbnailImages);
 
   return (
     <Root id={id}>
