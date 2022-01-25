@@ -72,5 +72,9 @@ module.exports = (_env, argv) => {
         },
       },
     },
+    stats: {
+      assetsSort: '!size',
+      groupAssetsByChunk: true,
+    },
   };
 };
