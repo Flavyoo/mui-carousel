@@ -5,6 +5,10 @@ export interface ThumbnailImageData {
   foundImage: React.ReactChild;
 }
 
+export interface ImageListItemProps {
+  selected: boolean;
+}
+
 export interface ThumbnailProps {
   /**
    * React child image elements to render thumbnails for
@@ -16,4 +20,8 @@ export interface ThumbnailProps {
    * @param index Index of the thumbnail that was clicked
    */
   onClick(index: number): void;
+  /**
+   * Index of the current selected carousel child
+   */
+  selectedIndex: number;
 }

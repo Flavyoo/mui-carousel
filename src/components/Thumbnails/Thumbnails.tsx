@@ -1,21 +1,31 @@
 import * as React from 'react';
 import { styled } from '@mui/system';
-import { ThumbnailProps } from './Thumbnails.props';
+import { ThumbnailProps, ImageListItemProps } from './Thumbnails.props';
 
 const ImageList = styled('div')({
   display: 'flex',
   flexWrap: 'wrap',
 });
 
-const ImageListItem = styled('div')({
-  marginRight: '0.5rem',
+const ImageListItem = styled('div', {
+  shouldForwardProp: prop => prop !== 'selected',
+})<ImageListItemProps>(({ selected, theme }) => ({
+  padding: theme.spacing(0.25),
+  margin: theme.spacing(0.25),
   cursor: 'pointer',
+  ...(selected && {
+    border: '2px solid black',
+  }),
   'img ': {
     width: 70,
   },
-});
+}));
 
-export const Thumbnails: React.FC<ThumbnailProps> = ({ images, onClick }) => {
+export const Thumbnails: React.FC<ThumbnailProps> = ({
+  images,
+  onClick,
+  selectedIndex,
+}) => {
   const handleClick = React.useCallback(
     (index: number) => {
       return () => {
@@ -43,6 +53,7 @@ export const Thumbnails: React.FC<ThumbnailProps> = ({ images, onClick }) => {
           const { foundImage, index } = imageData;
           return (
             <ImageListItem
+              selected={index === selectedIndex}
               onClick={handleClick(index)}
               onKeyDown={handleKeyDown(index)}
               aria-label={`Thumbnail for slide item ${index}`}
