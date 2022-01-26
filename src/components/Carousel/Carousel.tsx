@@ -116,13 +116,18 @@ export const Carousel: React.FC<CarouselProps> = ({
         </AnimatedSlider>
       </SliderContainer>
       <LegendControls
+        selectedIndex={currentlySelectedChild}
         numberOfControls={totalChildren}
         onClick={handleSelectChild}
       />
       {!children ||
       totalChildren === 0 ||
       (thumbnailImages && thumbnailImages.length === 0) ? undefined : (
-        <Thumbnails selectedIndex={currentlySelectedChild} images={thumbnailImages} onClick={handleSelectChild} />
+        <Thumbnails
+          selectedIndex={currentlySelectedChild}
+          images={thumbnailImages}
+          onClick={handleSelectChild}
+        />
       )}
     </Root>
   );

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { LegendControlProps } from './LegendControls.props';
+import { LegendControlProps, ControlItemProps } from './LegendControls.props';
 import { styled } from '@mui/system';
 
 const ControlUL = styled('ul')({
@@ -10,7 +10,9 @@ const ControlUL = styled('ul')({
   width: '100%',
 });
 
-const ControlLI = styled('li')({
+const ControlLI = styled('li', {
+  shouldForwardProp: prop => prop !== 'selected',
+})<ControlItemProps>(({ selected }) => ({
   display: 'inline-block',
   cursor: 'pointer',
   margin: '0 0.5rem',
@@ -19,11 +21,15 @@ const ControlLI = styled('li')({
   boxShadow: '1px 1px 2px rgb(0 0 0/90%)',
   width: 10,
   height: 10,
-});
+  ...(selected && {
+    border: '1px solid black',
+  }),
+}));
 
 export const LegendControls: React.FC<LegendControlProps> = ({
   onClick,
   numberOfControls,
+  selectedIndex,
 }) => {
   const handleClick = React.useCallback(
     (index: number) => {
@@ -49,6 +55,7 @@ export const LegendControls: React.FC<LegendControlProps> = ({
     <ControlUL tabIndex={0}>
       {[...Array(numberOfControls)].map((_, i) => (
         <ControlLI
+          selected={i === selectedIndex}
           key={i}
           onClick={handleClick(i)}
           onKeyDown={handleKeyDown(i)}

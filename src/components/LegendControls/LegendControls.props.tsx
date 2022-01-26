@@ -1,3 +1,6 @@
+export interface ControlItemProps {
+  selected: boolean;
+}
 export interface LegendControlProps {
   /**
    * The number of controls to show
@@ -9,4 +12,8 @@ export interface LegendControlProps {
    * @param index Index of the control that was clicked
    */
   onClick(index: number): void;
+  /**
+   * Index of the current selected carousel child
+   */
+  selectedIndex: number;
 }
