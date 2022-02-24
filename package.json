@@ -1,5 +1,5 @@
 {
-  "name": "slick-mui-carousel",
+  "name": "slick-react-carousel",
   "version": "0.2.4",
   "description": "A React Carousel Component",
   "main": "lib/index.js",
