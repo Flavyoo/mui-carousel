@@ -1,6 +1,6 @@
-# Material UI Carousel
+# React Carousel Component
 
-This is a simple implementation of a carousel component using Material UI Components.
+This is a simple implementation of a carousel component.
 
 ## Usage
 
@@ -10,10 +10,10 @@ See the /src/demoapp for examples of usages.
 
 - Response
 - Mobile Friendly
+- Image thumbnail support
 - Supports any html element
 
 ## Upcoming Features
 
-- Image thumbnails
 - Accessibility improvements including Keyboard Navigation
 - Customizations

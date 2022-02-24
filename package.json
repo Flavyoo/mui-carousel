@@ -1,7 +1,7 @@
 {
   "name": "@flavyoo/mui-carousel",
   "version": "0.2.3",
-  "description": "A React and Material UI carousel component",
+  "description": "A React Carousel Component",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
