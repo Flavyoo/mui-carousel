@@ -1,5 +1,5 @@
 {
-  "name": "@flavyoo/mui-carousel",
+  "name": "slick-mui-carousel",
   "version": "0.2.4",
   "description": "A React Carousel Component",
   "main": "lib/index.js",
