@@ -16,8 +16,8 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build:prod",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
+    "_disabled_preversion": "npm run lint",
+    "_disabled_version": "npm run format && git add -A ./src",
     "postversion": "git push && git push --tags",
     "test": "jest --config jestconfig.json"
   },
